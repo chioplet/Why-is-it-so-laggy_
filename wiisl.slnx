@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Gpd.App/Gpd.App.csproj" />
+    <Project Path="src/Gpd.Core/Gpd.Core.csproj" />
+  </Folder>
+</Solution>

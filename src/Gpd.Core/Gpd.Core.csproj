@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <AssemblyName>Gpd.Core</AssemblyName>
+    <RootNamespace>Gpd.Core</RootNamespace>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.12" />
+    <PackageReference Include="System.Management" Version="10.0.12" />
+    <!--
+      必需：.NET (Core) 默认**不带** GBK/936 等代码页，Encoding.GetEncoding(936) 会抛
+      ArgumentException。中文 Windows 上 powercfg 这类控制台程序输出的是 OEM 代码页（936），
+      少了这个包就只能退回 UTF-8 解码，电源计划名会变成乱码（实测「卓越性能」→「׿Խ����」）。
+    -->
+    <!-- NU1510 说这个包"自动可用"，实测验证中：先注释掉看电源计划是否仍能正确解码。 -->
+    <!-- <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.12" /> -->
+  </ItemGroup>
+
+</Project>

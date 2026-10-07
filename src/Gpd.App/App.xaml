@@ -1,0 +1,20 @@
+<Application x:Class="Gpd.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+      刻意不用 StartupUri：入口在 App.OnStartup 里手动创建窗口，
+      这样带 cli 开关时才能走无界面的一次性采集+出报告流程（方便脚本化与自动化验证）。
+      注意：XML 注释里不能出现连续两个减号（XAML 会报 MC3000），所以这里不写参数原文。
+    -->
+    <Application.Resources>
+        <!-- 只放最基础的样式，避免深色主题下控件文字看不清 -->
+        <Style TargetType="GroupBox">
+            <Setter Property="Margin" Value="0,0,0,8" />
+            <Setter Property="Padding" Value="6" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="10,4" />
+            <Setter Property="Margin" Value="0,0,6,0" />
+        </Style>
+    </Application.Resources>
+</Application>
